@@ -17,47 +17,67 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Homepage</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <style type="text/css">
+
+        .wrapper{
+            width: 650px;
+            margin: 0 auto;
+        }
+        .page-header h2{
+            margin-top: 0;
+        }
+        table tr td:last-child a{
+            margin-right: 15px;
+        }
+	</style>
 </head>
 <body>
+	<div class="container">
+		<div class="container-fluid">
+		    <div class="row">
+		        <div class="col-md-12">
+					<div class="page-header clearfix">
+						<h2 class="pull-left">My CRUD App</h2>
+						<a href="add.php" class="btn btn-primary pull-right">Add Another Country</a>
+					</div>
+						<table class="table table-bordered table-striped">
+						<thead class="thead-light">
+							<tr bgcolor="#cccccc">
+								<td>ID </td>
+								<td>Iso </td>
+								<td>Name </td>
+								<td>Nicename</td>
+								<td>Iso3</td>
+								<td>No. Code</td>
+								<td>Phone Code</td>
+								<td>created</td>
+								<td>Action</td>
+							</tr>
+						</thead>
+							<?php
 
-	<h1><?php echo "My Crud php app"; ?></h1>
+								while ( $res= mysqli_fetch_array($result)) {
+									echo "<tr>";
+									echo "<td>".$res['id']. "</td>";
+									echo "<td>".$res['iso']. "</td>";
+									echo "<td>".$res['name']. "</td>";
+									echo "<td>".$res['nicename']. "</td>";
+									echo "<td>".$res['iso3']. "</td>";
+									echo "<td>".$res['numcode']. "</td>";
+									echo "<td>".$res['phonecode']. "</td>";
+									echo "<td>".$res['created_at']. "</td>";
+									echo "</tr>";
+								}
+							?>
+						</table>	
+					</div>
+				</div>
+			</div>
+		</div>
 
-	<table class="table table-striped">
-		<thead class="thead-light">
-		<tr bgcolor="#cccccc">
-			<td>ID </td>
-			<td>Iso </td>
-			<td>Name </td>
-			<td>Nicename</td>
-			<td>Iso3</td>
-			<td>No. Code</td>
-			<td>Phone Code</td>
-			<td>created</td>
-		</tr>
-		</thead>
-		<?php
-
-		while ( $res= mysqli_fetch_array($result)) {
-			echo "<tr>";
-			echo "<td>".$res['id']. "</td>";
-			echo "<td>".$res['iso']. "</td>";
-			echo "<td>".$res['name']. "</td>";
-			echo "<td>".$res['nicename']. "</td>";
-			echo "<td>".$res['iso3']. "</td>";
-			echo "<td>".$res['numcode']. "</td>";
-			echo "<td>".$res['phonecode']. "</td>";
-			echo "<td>".$res['created_at']. "</td>";
-			echo "</tr>";
-		}
-
-		?>
-	</table>	
-
-</body>
+	</body>
 
 </html>
